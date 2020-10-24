@@ -1,5 +1,9 @@
 import React from 'react';
+import {AddContainer} from "../Components/AddContainer";
 
 export const AddPage = () => {
-  return <div>Add page</div>
+  return <>
+    <h2>Dodaj wydatek</h2>
+    <AddContainer />
+  </>
 };

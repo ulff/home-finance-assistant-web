@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="app">
       <header className="">
-        Home Finance Assistant
+        <h1>Home Finance Assistant</h1>
       </header>
       <BrowserRouter>
         <div>
           <nav>
-            <ul>
+            <ul className="main-menu">
               <li>
                 <Link to="/">Home</Link>
               </li>
