@@ -3,7 +3,8 @@ import "./Assets/less/app.less";
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import {HomePage} from "./Pages/HomePage";
 import {AddPage} from "./Pages/AddPage";
-import {NotFound} from "./Pages/NotFound";
+import {NotFoundPage} from "./Pages/NotFoundPage";
+import {LatestPage} from "./Pages/LatestPage";
 
 function App() {
   return (
@@ -21,13 +22,17 @@ function App() {
               <li>
                 <Link to="/add">Add</Link>
               </li>
+              <li>
+                <Link to="/latest">Latest</Link>
+              </li>
             </ul>
           </nav>
         </div>
         <Switch>
           <Route exact path="/" render={() => (<HomePage />)} />
           <Route exact path="/add" render={() => (<AddPage />)} />
-          <Route component={NotFound} />
+          <Route exact path="/latest" render={() => (<LatestPage />)} />
+          <Route component={NotFoundPage} />
         </Switch>
       </BrowserRouter>
     </div>
