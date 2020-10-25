@@ -1,6 +1,6 @@
-import {ExpenseGroupNodeType, ExpenseTagType} from "../Contract/ExpenseType";
+import {GroupNodeType, TagType} from "../Contract/ExpenseType";
 
-export function getExpenseTags(): Array<ExpenseTagType> {
+export function getExpenseTags(): Array<TagType> {
   return [
     "Żabka",
     "Biedronka",
@@ -8,7 +8,7 @@ export function getExpenseTags(): Array<ExpenseTagType> {
   ];
 }
 
-export function getExpenseGroups(): Array<ExpenseGroupNodeType> {
+export function getExpenseGroups(): Array<GroupNodeType> {
   return [
     {
       type: "car",

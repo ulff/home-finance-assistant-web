@@ -6,21 +6,21 @@ export type AmountType = {
   fractional: number;
 }
 
-export type ExpenseGroupType = {
+export type GroupType = {
   type: string;
   label: string;
 }
-export type ExpenseGroupNodeType = ExpenseGroupType & { children: Array<ExpenseGroupLeafType> }
-export type ExpenseGroupLeafType = ExpenseGroupType
+export type GroupNodeType = GroupType & { children: Array<GroupLeafType> }
+export type GroupLeafType = GroupType
 
-export type ExpenseTagType = string;
+export type TagType = string;
 
 export type ExpenseType = {
   amount: AmountType;
   date: Date;
   label: string | null;
-  group: ExpenseGroupLeafType;
-  tags: Array<ExpenseTagType>;
+  group: GroupLeafType;
+  tags: Array<TagType>;
   account: AccountType;
   executor: MemberType;
 }

@@ -1,52 +1,21 @@
 import React, {useState} from 'react';
 import {getExpenseGroups, getExpenseTags} from "../Api/Client";
 import {
-  ExpenseGroupLeafType,
-  ExpenseGroupNodeType, ExpenseTagType
+  GroupLeafType,
+  GroupNodeType,
 } from "../Api/Contract/ExpenseType";
+import {AddSubGroup} from "./AddSubGroup";
+import {AddGroup} from "./AddGroup";
+import {AddTags} from "./AddTags";
 
 type AddContainerProps = {};
 
-const ExpenseGroupLeaf: React.FC<{group: ExpenseGroupNodeType | null}> = ({group}) => {
-  const [toggledLeafGroup, setToggledLeafGroup] = useState<ExpenseGroupLeafType | null>(null);
-
-  const selectLeafGroup = (expenseGroup: ExpenseGroupLeafType) => {
-    setToggledLeafGroup((toggledLeafGroup) => (
-      toggledLeafGroup && toggledLeafGroup.type === expenseGroup.type ? null : expenseGroup
-    ));
-  };
-
-  if (!group || group.children.length === 0) return null;
-
-  return <>
-    <h4>Wybierz podgrupę</h4>
-    {group.children.map((eg: ExpenseGroupLeafType) => (
-      <button
-        key={eg.type}
-        className={`button-group ${toggledLeafGroup && toggledLeafGroup.type === eg.type ? "button-group-toggled" : ""}`}
-        onClick={() => selectLeafGroup(eg)}
-      >
-        {eg.label}
-      </button>
-    ))}
-  </>
-};
-
 export const AddContainer: React.FC<AddContainerProps> = (props) => {
-  const [toggledNodeGroup, setToggledNodeGroup] = useState<ExpenseGroupNodeType | null>(null);
+  const [toggledNodeGroup, setToggledNodeGroup] = useState<GroupNodeType | null>(null);
+  const [toggledLeafGroup, setToggledLeafGroup] = useState<GroupLeafType | null>(null);
 
-  const toggleNodeGroup = (expenseGroup: ExpenseGroupNodeType) => {
-    setToggledNodeGroup((toggledNodeGroup) => (
-      toggledNodeGroup && toggledNodeGroup.type === expenseGroup.type ? null : expenseGroup
-    ));
-  };
-
-  const toggleTag = (tag: ExpenseTagType) => {
-    console.log('to be implemented', tag);
-  };
-
-  const expenseGroups = getExpenseGroups();
-  const expenseTags = getExpenseTags();
+  const groups = getExpenseGroups();
+  const tags = getExpenseTags();
 
   return <>
     <div className="add">
@@ -54,34 +23,23 @@ export const AddContainer: React.FC<AddContainerProps> = (props) => {
         <h3>Kwota</h3>
         <input type="text" name="moneyUnit"/>, <input type="text" name="moneyFractional"/> PLN
       </div>
-      <div className="add-expense">
+      <div className="add-groups">
         <h3>Przeznaczenie</h3>
-        <div className="add-groups">
-          <h4>Wybierz grupę</h4>
-          {expenseGroups.map((eg: ExpenseGroupNodeType) => (
-            <button
-              key={eg.type}
-              className={`button-group ${toggledNodeGroup && toggledNodeGroup.type === eg.type ? "button-group-toggled" : ""}`}
-              onClick={() => toggleNodeGroup(eg)}
-            >
-              {eg.label}
-            </button>
-          ))}
-          <br/>
-          <ExpenseGroupLeaf group={toggledNodeGroup} />
-        </div>
+        <AddGroup
+          groups={groups}
+          toggled={toggledNodeGroup}
+          toggleMethod={setToggledNodeGroup}
+        />
+        <br/>
+        <AddSubGroup
+          group={toggledNodeGroup}
+          toggled={toggledLeafGroup}
+          toggleMethod={setToggledLeafGroup}
+        />
       </div>
       <div className="add-tags">
         <h3>Tagi</h3>
-        {expenseTags.map((tag: ExpenseTagType) => (
-          <button
-            key={tag}
-            className={`button-tag`}
-            onClick={() => toggleTag(tag)}
-          >
-            {tag}
-          </button>
-        ))}
+        <AddTags tags={tags}/>
       </div>
       <div className="add-buttons">
         <button className="button-save">Zapisz</button>
