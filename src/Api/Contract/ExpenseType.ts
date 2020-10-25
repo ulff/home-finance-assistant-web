@@ -19,7 +19,8 @@ export type ExpenseType = {
   amount: AmountType;
   date: Date;
   label: string | null;
-  group: GroupLeafType;
+  group: GroupNodeType;
+  subgroup: GroupLeafType;
   tags: Array<TagType>;
   account: AccountType;
   executor: MemberType;

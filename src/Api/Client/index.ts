@@ -2,37 +2,30 @@ import {GroupNodeType, TagType} from "../Contract/ExpenseType";
 
 export function getExpenseTags(): Array<TagType> {
   return [
-    "Żabka",
-    "Biedronka",
-    "Napoje i przekąski",
+    "#żabka",
+    "#biedronka",
+    "#alkohol",
+    "#przekąski"
   ];
 }
 
 export function getExpenseGroups(): Array<GroupNodeType> {
   return [
     {
-      type: "car",
-      label: "Samochodowe",
+      type: "life",
+      label: "Codzienne",
       children: [
         {
-          type: "fuel",
-          label: "Paliwo",
+          type: "food",
+          label: "Żywność",
         },
         {
-          type: "insurance",
-          label: "Ubezpieczenie",
+          type: "cleaning",
+          label: "Chemia domowa",
         },
         {
-          type: "loan",
-          label: "Kredyt samochodowy",
-        },
-        {
-          type: "mechanics",
-          label: "Warsztaty i naprawy",
-        },
-        {
-          type: "service",
-          label: "Serwis i eksploatacja",
+          type: "home",
+          label: "Wyposażenie domowe",
         },
         {
           type: "other",
@@ -93,20 +86,28 @@ export function getExpenseGroups(): Array<GroupNodeType> {
       ]
     },
     {
-      type: "life",
-      label: "Codzienne",
+      type: "car",
+      label: "Samochodowe",
       children: [
         {
-          type: "food",
-          label: "Żywność",
+          type: "fuel",
+          label: "Paliwo",
         },
         {
-          type: "cleaning",
-          label: "Chemia domowa",
+          type: "insurance",
+          label: "Ubezpieczenie",
         },
         {
-          type: "home",
-          label: "Wyposażenie domowe",
+          type: "loan",
+          label: "Kredyt samochodowy",
+        },
+        {
+          type: "mechanics",
+          label: "Warsztaty i naprawy",
+        },
+        {
+          type: "service",
+          label: "Serwis i eksploatacja",
         },
         {
           type: "other",

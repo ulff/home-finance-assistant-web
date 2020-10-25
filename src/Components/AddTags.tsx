@@ -7,15 +7,16 @@ const toggleTag = (tag: TagType) => {
 
 export const AddTags: React.FC<{tags: Array<TagType>}> = ({tags}) => {
   return <>
-    <h4>Wybierz tagi</h4>
-    {tags.map((tag: TagType) => (
-      <button
-        key={tag}
-        className={`button-tag`}
-        onClick={() => toggleTag(tag)}
-      >
-        {tag}
-      </button>
-    ))}
+    <div className="btn-group" role="group">
+      {tags.map((tag: TagType) => (
+        <button
+          key={tag}
+          className={`button-tag btn btn-light`}
+          onClick={() => toggleTag(tag)}
+        >
+          {tag}
+        </button>
+      ))}
+    </div>
   </>
 };

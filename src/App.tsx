@@ -10,20 +10,22 @@ function App() {
   return (
     <div className="app">
       <header className="">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+              integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossOrigin="anonymous" />
         <h1>Home Finance Assistant</h1>
       </header>
       <BrowserRouter>
-        <div>
-          <nav>
-            <ul className="main-menu">
-              <li>
-                <Link to="/">Home</Link>
+        <div className="navbar">
+          <nav className="collapse navbar-collapse show">
+            <ul className="main-menu navbar-nav">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Home</Link>
               </li>
-              <li>
-                <Link to="/add">Add</Link>
+              <li className="nav-item">
+                <Link to="/add" className="nav-link">Add</Link>
               </li>
-              <li>
-                <Link to="/latest">Latest</Link>
+              <li className="nav-item">
+                <Link to="/latest" className="nav-link">Latest</Link>
               </li>
             </ul>
           </nav>

@@ -17,15 +17,16 @@ export const AddSubGroup: React.FC<AddSubGroupPropsType> = ({group, toggled, tog
   if (!group || group.children.length === 0) return null;
 
   return <>
-    <h4>Wybierz podgrupę</h4>
-    {group.children.map((eg: GroupLeafType) => (
-      <button
-        key={eg.type}
-        className={`button-group ${toggled && toggled.type === eg.type ? "button-group-toggled" : ""}`}
-        onClick={() => selectLeafGroup(eg)}
-      >
-        {eg.label}
-      </button>
-    ))}
+    <div className="btn-group" role="group">
+      {group.children.map((eg: GroupLeafType) => (
+        <button
+          key={eg.type}
+          className={`button-group btn btn-${toggled && toggled.type === eg.type ? "primary" : "secondary"}`}
+          onClick={() => selectLeafGroup(eg)}
+        >
+          {eg.label}
+        </button>
+      ))}
+    </div>
   </>
 };
