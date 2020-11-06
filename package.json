@@ -76,7 +76,21 @@
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "rules": {
+      "no-shadow": [
+        "warn",
+        {
+          "builtinGlobals": true
+        }
+      ],
+      "import/no-cycle": [
+        2,
+        {
+          "ignoreExternal": true
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [

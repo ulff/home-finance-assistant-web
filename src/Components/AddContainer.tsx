@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {getExpenseGroups, getExpenseTags} from "../Api/Client";
 import {
   ExpenseType,
@@ -8,10 +8,12 @@ import {
 import {AddSubGroup} from "./AddSubGroup";
 import {AddGroup} from "./AddGroup";
 import {AddTags} from "./AddTags";
+import {SettingsContext} from "../Contexts/SettingsContext";
 
 type AddContainerProps = {};
 
 export const AddContainer: React.FC<AddContainerProps> = (props) => {
+  const settings = useContext(SettingsContext);
   const [error, setError] = useState<string>("");
   const [label, setLabel] = useState<string>("");
   const [moneyUnit, setMoneyUnit] = useState<number>(0);
@@ -52,6 +54,11 @@ export const AddContainer: React.FC<AddContainerProps> = (props) => {
     // @todo: remove this workaround
     setError("");
 
+    if (settings.loading) {
+      console.error('Could not get settings!');
+      return;
+    }
+
     const expense: ExpenseType = {
       amount: {
         unit: moneyUnit,
@@ -59,21 +66,23 @@ export const AddContainer: React.FC<AddContainerProps> = (props) => {
       },
       group: toggledNodeGroup,
       subgroup: toggledLeafGroup,
-      label, // @todo
+      label,
       date: new Date(),
       tags: [], // @todo
-      account: {
-        number: "123 456 789", // @todo
-        label: "To be implemented",
-      },
-      executor: {
-        firstname: "To be implemented",
-        lastname: "To be implemented"
-      }
+      account: settings.account,
+      executor: settings.member,
     };
 
     console.log('Saving...', expense)
   };
+
+  if (settings.loading) {
+    return <div className="add">
+      <div className="alert alert-primary" role="alert">
+        Loading settings...
+      </div>
+    </div>
+  }
 
   return <>
     <div className="add">

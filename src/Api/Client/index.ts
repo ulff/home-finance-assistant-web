@@ -1,4 +1,26 @@
 import {GroupNodeType, TagType} from "../Contract/ExpenseType";
+import {AccountType} from "../Contract/AccountType";
+import {MemberType} from "../Contract/MemberType";
+
+export type SettingsType = {
+  account: AccountType,
+  member: MemberType
+}
+
+export function getSettings(): Promise<SettingsType> {
+  return new Promise((resolve) => {
+    resolve({
+      account: {
+        number: "68 1140 2004 0000 3102 3436 1372",
+          label: "eKonto - moje"
+      },
+      member: {
+        firstname: "Olaf",
+          lastname: "Gałązka"
+      }
+    });
+  });
+}
 
 export function getExpenseTags(): Array<TagType> {
   return [
