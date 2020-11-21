@@ -1,5 +1,5 @@
 import React, {Dispatch, SetStateAction} from "react";
-import {GroupLeafType, GroupNodeType} from "../Api/Contract/ExpenseType";
+import {GroupLeafType, GroupNodeType} from "../../Api/Contract/ExpenseType";
 
 type AddSubGroupPropsType = {
   group: GroupNodeType | null;

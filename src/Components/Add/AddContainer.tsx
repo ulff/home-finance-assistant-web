@@ -1,14 +1,14 @@
 import React, {useContext, useState} from 'react';
-import {getExpenseGroups, getExpenseTags} from "../Api/Client";
+import {getExpenseGroups, getExpenseTags} from "../../Api/Client";
 import {
   ExpenseType,
   GroupLeafType,
   GroupNodeType,
-} from "../Api/Contract/ExpenseType";
+} from "../../Api/Contract/ExpenseType";
 import {AddSubGroup} from "./AddSubGroup";
 import {AddGroup} from "./AddGroup";
 import {AddTags} from "./AddTags";
-import {SettingsContext} from "../Contexts/SettingsContext";
+import {SettingsContext} from "../../Contexts/SettingsContext";
 
 type AddContainerProps = {};
 

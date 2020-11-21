@@ -1,11 +1,12 @@
 import React from 'react';
 import "./Assets/less/app.less";
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import {BrowserRouter, Route, Link, Switch, RouteComponentProps} from 'react-router-dom';
 import {HomePage} from "./Pages/HomePage";
 import {AddPage} from "./Pages/AddPage";
 import {NotFoundPage} from "./Pages/NotFoundPage";
 import {LatestPage} from "./Pages/LatestPage";
 import {SettingsContextProvider} from "./Contexts/SettingsContext";
+import {TestAuthPage} from "./Pages/TestAuthPage";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
                 <li className="nav-item">
                   <Link to="/latest" className="nav-link">Latest</Link>
                 </li>
+                <li className="nav-item">
+                  <Link to="/auth" className="nav-link">Test auth</Link>
+                </li>
               </ul>
             </nav>
           </div>
@@ -37,6 +41,7 @@ function App() {
             <Route exact path="/" render={() => (<HomePage />)} />
             <Route exact path="/add" render={() => (<AddPage />)} />
             <Route exact path="/latest" render={() => (<LatestPage />)} />
+            <Route exact path="/auth" render={(props: RouteComponentProps) => (<TestAuthPage {...props}/>)} />
             <Route component={NotFoundPage} />
           </Switch>
         </BrowserRouter>

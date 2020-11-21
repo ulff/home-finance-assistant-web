@@ -1,5 +1,5 @@
 import React from 'react';
-import {AddContainer} from "../Components/AddContainer";
+import {AddContainer} from "../Components/Add/AddContainer";
 
 export const AddPage = () => {
   return <>

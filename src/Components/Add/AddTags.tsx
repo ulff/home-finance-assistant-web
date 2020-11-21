@@ -1,4 +1,4 @@
-import {TagType} from "../Api/Contract/ExpenseType";
+import {TagType} from "../../Api/Contract/ExpenseType";
 import React from "react";
 
 const toggleTag = (tag: TagType) => {
